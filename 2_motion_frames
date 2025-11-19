@@ -1,0 +1,16 @@
+#! /bin/bash --login
+
+#SBATCH --mem=64g
+#SBATCH --cpus-per-task=16
+#SBATCH --partition=all
+#SBATCH --time=12:00:00
+#SBATCH --error=./slurmout/slurm-%j.out
+#SBATCH --output=./slurmout/slurm-%j.out
+
+module load miniconda3
+conda activate tick
+
+SECONDS=0
+#python getMotionFramesMultiThreadCV2.py ../../data/duration_repaired/20250723/R\ sanguineus/FTY720/             ../../data/motion_frames/20250723-R_sanguineus-FTY720
+python getMotionFramesMultiThreadCV2.py ../../data/duration_repaired/20250723/R\ sanguineus/Repeated\ Exposure/ ../../data/motion_frames/20250723-R_sanguineus-Repeated_Exposure
+echo "Process took $SECONDS seconds."

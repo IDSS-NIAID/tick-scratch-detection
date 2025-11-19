@@ -1,0 +1,14 @@
+#! /bin/bash --login
+
+#SBATCH --mem=32g
+#SBATCH --cpus-per-task=32
+#SBATCH --time=48:00:00
+#SBATCH --error=./slurmout/slurm-%j.out
+#SBATCH --output=./slurmout/slurm-%j.out
+
+module load ffmpeg
+module load miniconda3
+conda activate tick
+
+python detectPositiveClips.py --predict_root ../../data/motion_frames/20250723-R_sanguineus-FTY720             --clip_output ../../data/events/20250723-R_sanguineus-FTY720             --video_root ../../data/duration_repaired/20250723/R\ sanguineus/FTY720/
+python detectPositiveClips.py --predict_root ../../data/motion_frames/20250723-R_sanguineus-Repeated_Exposure/ --clip_output ../../data/events/20250723-R_sanguineus-Repeated_Exposure/ --video_root ../../data/duration_repaired/20250723/R\ sanguineus/Repeated\ Exposure/

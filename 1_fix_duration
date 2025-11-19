@@ -1,0 +1,15 @@
+#! /bin/bash --login
+
+#SBATCH --mem=32g
+#SBATCH --cpus-per-task=2
+#SBATCH --time=4:00:00
+#SBATCH --error=./slurmout/slurm-%j.out
+#SBATCH --output=./slurmout/slurm-%j.out
+
+module load miniconda3
+module load ffmpeg
+
+SECONDS=0
+#python fixDuration.py ../../data/raw/20250723/R\ sanguineus/FTY720/ ../../data/duration_repaired/20250723/R\ sanguineus/FTY720/
+python fixDuration.py ../../data/raw/20250723/R\ sanguineus/Repeated\ Exposure/ ../../data/duration_repaired/20250723/R\ sanguineus/Repeated\ Exposure/
+echo "Process took $SECONDS seconds."
