@@ -1,0 +1,27 @@
+[dataroot]
+path = ../../../data/events
+
+[labels]
+label1 = Tick-scratch
+label2 = Non-scratch
+label3 = Scratch
+
+[s3bucket]
+bucket = bucket_name_dev
+event_root = events
+profile = dev-admin
+
+[dynamodb]
+table = detected_events
+profile = dev-admin
+region = us-east-1
+
+[s3bucket-prod]
+bucket = bucket_name_prod
+event_root = events
+profile = prod-admin
+
+[dynamodb-prod]
+table = detected_events
+profile = prod-admin
+region = your_region
